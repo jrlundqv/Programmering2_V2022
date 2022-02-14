@@ -1,4 +1,4 @@
-package no.hiof.jrlundqv.oblig2;
+package no.hiof.jrlundqv.oblig2.model;
 
 public class Star {
     private String name;

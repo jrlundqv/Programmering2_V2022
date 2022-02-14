@@ -1,5 +1,9 @@
 package no.hiof.jrlundqv.oblig2;
 
+import no.hiof.jrlundqv.oblig2.model.Planet;
+import no.hiof.jrlundqv.oblig2.model.PlanetSystem;
+import no.hiof.jrlundqv.oblig2.model.Star;
+
 import java.util.ArrayList;
 
 public class Main {
