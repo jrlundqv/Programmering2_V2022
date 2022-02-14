@@ -1,4 +1,4 @@
-package oblig1.no.hiof.jrlundqv;
+package no.hiof.jrlundqv.oblig1;
 
 public class Oppgave2_3 {
 

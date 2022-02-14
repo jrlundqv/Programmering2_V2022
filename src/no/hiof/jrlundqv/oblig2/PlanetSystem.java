@@ -1,4 +1,4 @@
-package oblig2.no.hiof.jrlundqv.model;
+package no.hiof.jrlundqv.oblig2;
 
 import java.util.ArrayList;
 
