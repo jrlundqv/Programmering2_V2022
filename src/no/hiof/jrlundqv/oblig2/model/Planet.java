@@ -11,6 +11,10 @@ public class Planet {
         this.mass = mass;
     }
 
+    public double getREarth() {
+        return getRadiusInKm() / 6371;
+    }
+
     public double getMEarth() {
         return getMassInKg() / 5.972E24;
     }

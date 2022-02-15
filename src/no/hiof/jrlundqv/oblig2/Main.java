@@ -49,6 +49,7 @@ public class Main {
         System.out.println("The smallest planet in " + solarSystem.getName() + " is " + solarSystem.getSmallestPlanet().getName());
 
         System.out.println("\nOppgave 3.1");
-        System.out.println(earth.getMEarth());
+        System.out.println("Uranus radius in Rearth: " + uranus.getREarth());
+        System.out.println("Uranus mass in Mearth: " + uranus.getMEarth());
     }
 }
