@@ -1,61 +1,38 @@
 package no.hiof.jrlundqv.oblig3.model;
 
-public class Planet {
-    private String name;
-    private double radius;
-    private double mass;
+public class Planet extends NaturalSatellite {
+    static final double RJUP = 71492;
+    static final double MJUP = 1.898E27;
+    static final double REARTH = 6371;
+    static final double MEARTH = 5.972E24;
+    static final double GRAVITY_CONSTANT = 6.67408E-11;
 
-    public Planet(String name, double radius, double mass) {
-        this.name = name;
-        this.radius = radius;
-        this.mass = mass;
+    public Planet(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, CelestialBody centralCelestialBody) {
+        super(name, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, centralCelestialBody);
     }
 
     public double getREarth() {
-        return getRadiusInKm() / 6371;
+        return getRadiusInKm() / REARTH;
     }
 
     public double getMEarth() {
-        return getMassInKg() / 5.972E24;
+        return getMassInKg() / MEARTH;
     }
 
     public double getSurfaceGravity() {
-        return 6.67408E-11*getMassInKg()/Math.pow(getRadiusInKm()*1000,2);
+        return GRAVITY_CONSTANT * getMassInKg() / Math.pow(getRadiusInKm() * 1000, 2);
     }
 
     public double getRadiusInKm() {
-        return radius * 71492;
+        return getRadius() * RJUP;
     }
 
     public double getMassInKg() {
-        return mass * 1.898E27;
+        return getMass() * MJUP;
     }
 
+    @Override
     public String toString() {
-        return name + " has a radius of " + radius + " Rjup, and a mass of " + mass + " Mjup";
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getRadius() {
-        return radius;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
-    public double getMass() {
-        return mass;
-    }
-
-    public void setMass(double mass) {
-        this.mass = mass;
+        return "Name: " + getName() + ", Radius: " + getRadius() + ", Mass: " + getMass();
     }
 }

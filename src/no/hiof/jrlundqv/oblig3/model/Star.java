@@ -1,52 +1,25 @@
 package no.hiof.jrlundqv.oblig3.model;
 
-public class Star {
-    private String name;
-    private double radius;
-    private double mass;
+public class Star extends CelestialBody{
     private int effectiveTemp;
+    static final double RSUN = 695700;
+    static final double MSUN = 1.98892E30;
 
     public Star(String name, double radius, double mass, int effectiveTemp) {
-        this.name = name;
-        this.radius = radius;
-        this.mass = mass;
+        super(name, radius, mass);
         this.effectiveTemp = effectiveTemp;
     }
 
     public double getRadiusInKm() {
-        return radius * 695700;
+        return getRadius() * RSUN;
     }
 
     public double getMassInKg() {
-        return mass * 1.98892E30;
+        return getMass() * MSUN;
     }
 
     public String toString() {
-        return name + " has a radius of " + radius + " Rsun, a mass of " + mass + " Msun, and an effective temperature of " + effectiveTemp;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getRadius() {
-        return radius;
-    }
-
-    public void setRadius(double radius) {
-        this.radius = radius;
-    }
-
-    public double getMass() {
-        return mass;
-    }
-
-    public void setMass(double mass) {
-        this.mass = mass;
+        return getName() + ", Radius: " + getRadius() + ", Mass: " + getMass() + ", Eff. temp.: " + effectiveTemp;
     }
 
     public int getEffectiveTemp() {

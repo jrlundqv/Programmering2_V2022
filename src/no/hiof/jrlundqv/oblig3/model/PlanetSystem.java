@@ -13,6 +13,14 @@ public class PlanetSystem {
         this.planets = planets;
     }
 
+    public Planet getPlanetByName(String name) {
+        for (Planet planet : planets) {
+            if (planet.getName().equalsIgnoreCase(name))
+                return planet;
+        }
+        return null;
+    }
+
     public Planet getSmallestPlanet() {
         Planet smallestPlanet = planets.get(0);
         for (Planet planet : planets) {
@@ -38,7 +46,7 @@ public class PlanetSystem {
     }
 
     public String toString() {
-        return name + " has the star " + centerStar.getName() + " and " + planets.size() + " planets in orbit";
+        return "Name: " + name + "\nStar: " + centerStar + "\nPlanets: " + planets;
     }
 
     public String getName() {
