@@ -27,6 +27,11 @@ public class Main {
         System.out.println("Oppgave 2.2");
         System.out.println(solarSystem.getPlanetByName("uranus"));
 
-
+        System.out.println("\nOppgave 2.5");
+        earth.printDistanceToCentralBody(0);
+        earth.printDistanceToCentralBody(90);
+        earth.printDistanceToCentralBody(180);
+        earth.printDistanceToCentralBody(270);
+        earth.printDistanceToCentralBody(360);
     }
 }
