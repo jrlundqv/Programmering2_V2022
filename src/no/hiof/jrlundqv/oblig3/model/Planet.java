@@ -5,7 +5,6 @@ public class Planet extends NaturalSatellite {
     static final double MJUP = 1.898E27;
     static final double REARTH = 6371;
     static final double MEARTH = 5.972E24;
-    static final double GRAVITY_CONSTANT = 6.67408E-11;
 
     public Planet(String name, double radius, double mass, double semiMajorAxis, double eccentricity, int orbitalPeriod, CelestialBody centralCelestialBody) {
         super(name, radius, mass, semiMajorAxis, eccentricity, orbitalPeriod, centralCelestialBody);

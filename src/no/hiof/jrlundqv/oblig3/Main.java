@@ -33,5 +33,15 @@ public class Main {
         earth.printDistanceToCentralBody(180);
         earth.printDistanceToCentralBody(270);
         earth.printDistanceToCentralBody(360);
+
+        System.out.println("\nOppgave 2.6");
+        earth.printOrbitingVelocity(0);
+        earth.printOrbitingVelocity(45);
+        earth.printOrbitingVelocity(90);
+        earth.printOrbitingVelocity(135);
+        earth.printOrbitingVelocity(180);
+
+        System.out.println("\nOppgave 3.1");
+        earth.printOrbitingVelocityMetersPerSecond(90);
     }
 }

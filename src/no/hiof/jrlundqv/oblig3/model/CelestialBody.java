@@ -4,6 +4,7 @@ public abstract class CelestialBody {
     private String name;
     private double radius;
     private double mass;
+    static final double GRAVITY_CONSTANT = 6.67408E-11;
 
     public CelestialBody(String name, double radius, double mass) {
         this.name = name;
