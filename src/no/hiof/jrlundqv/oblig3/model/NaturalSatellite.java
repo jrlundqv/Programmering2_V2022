@@ -15,6 +15,11 @@ public abstract class NaturalSatellite extends CelestialBody{
         this.centralCelestialBody = centralCelestialBody;
     }
 
+    public void printMinMaxDistance() {
+        System.out.printf("%s has maximum distance of %,.0f km, and a minimum distance of %,.0f km\n"
+        , getName(), maxDistanceToCentralBody(), minDistanceToCentralBody());
+    }
+
     public void printOrbitingVelocityMetersPerSecond(double degrees) {
         System.out.printf("At a distance of %,.0f km, %s has a velocity of %.0f m/s\n"
                 , distanceToCentralBody(degrees), getName(), orbitingVelocityMetersPerSecond(distanceToCentralBodyInMeters(degrees)));
@@ -45,6 +50,24 @@ public abstract class NaturalSatellite extends CelestialBody{
 
     public double orbitingVelocityMetersPerSecond(double distance) {
         return orbitingVelocity(distance) * 1000;
+    }
+
+    public double minDistanceToCentralBody() {
+        double minDistance = distanceToCentralBody(0);
+        for (int i = 0; i < orbitalPeriod; i++) {
+            if (distanceToCentralBody(i) < minDistance)
+                minDistance = distanceToCentralBody(i);
+        }
+        return minDistance;
+    }
+
+    public double maxDistanceToCentralBody() {
+        double maxDistance = 0;
+        for (int i = 0; i < orbitalPeriod; i++) {
+            if (distanceToCentralBody(i) > maxDistance)
+                maxDistance = distanceToCentralBody(i);
+        }
+        return maxDistance;
     }
 
     /**

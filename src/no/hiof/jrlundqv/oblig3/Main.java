@@ -43,5 +43,8 @@ public class Main {
 
         System.out.println("\nOppgave 3.1");
         earth.printOrbitingVelocityMetersPerSecond(90);
+
+        System.out.println("\nOppgave 3.2");
+        earth.printMinMaxDistance();
     }
 }
