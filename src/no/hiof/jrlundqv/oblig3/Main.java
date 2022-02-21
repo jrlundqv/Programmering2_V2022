@@ -46,5 +46,8 @@ public class Main {
 
         System.out.println("\nOppgave 3.2");
         earth.printMinMaxDistance();
+
+        System.out.println("\nOppgave 3.3");
+        
     }
 }

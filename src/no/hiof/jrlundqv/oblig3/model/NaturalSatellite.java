@@ -35,6 +35,10 @@ public abstract class NaturalSatellite extends CelestialBody{
                 , getName(), distanceToCentralBody(degrees), centralCelestialBody.getName(), degrees);
     }
 
+    public double distanceBetweenPlanets(Planet planet) {
+        return 0;
+    }
+
     /**
      * v = sqrt(GM / r)
      * v = velocity in m/s
@@ -53,19 +57,25 @@ public abstract class NaturalSatellite extends CelestialBody{
     }
 
     public double minDistanceToCentralBody() {
+        double degrees = 0;
+        double degreeIncrement = 360.0 / orbitalPeriod;
         double minDistance = distanceToCentralBody(0);
         for (int i = 0; i < orbitalPeriod; i++) {
-            if (distanceToCentralBody(i) < minDistance)
-                minDistance = distanceToCentralBody(i);
+            degrees += degreeIncrement;
+            if (distanceToCentralBody(degrees) < minDistance)
+                minDistance = distanceToCentralBody(degrees);
         }
         return minDistance;
     }
 
     public double maxDistanceToCentralBody() {
-        double maxDistance = 0;
+        double degrees = 0;
+        double degreeIncrement = 360.0 / orbitalPeriod;
+        double maxDistance = distanceToCentralBody(0);
         for (int i = 0; i < orbitalPeriod; i++) {
-            if (distanceToCentralBody(i) > maxDistance)
-                maxDistance = distanceToCentralBody(i);
+            degrees += degreeIncrement;
+            if (distanceToCentralBody(degrees) > maxDistance)
+                maxDistance = distanceToCentralBody(degrees);
         }
         return maxDistance;
     }
