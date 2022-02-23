@@ -24,7 +24,7 @@ public class Main {
 
         PlanetSystem solarSystem = new PlanetSystem("Solar system", sun, planetList);
 
-        System.out.println("Oppgave 2.2");
+        System.out.println("\nOppgave 2.2");
         System.out.println(solarSystem.getPlanetByName("uranus"));
 
         System.out.println("\nOppgave 2.5");
@@ -48,6 +48,6 @@ public class Main {
         earth.printMinMaxDistance();
 
         System.out.println("\nOppgave 3.3");
-        
+        earth.printDistanceBetweenPlanets(saturn, 180);
     }
 }

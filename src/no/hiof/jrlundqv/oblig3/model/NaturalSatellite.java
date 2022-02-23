@@ -15,6 +15,11 @@ public abstract class NaturalSatellite extends CelestialBody{
         this.centralCelestialBody = centralCelestialBody;
     }
 
+    public void printDistanceBetweenPlanets(NaturalSatellite planet, int days) {
+        System.out.printf("The distance between %s and %s at day %d is %,.0f km\n"
+        , getName(), planet.getName(), days, distanceBetweenPlanets(planet, days));
+    }
+
     public void printMinMaxDistance() {
         System.out.printf("%s has maximum distance of %,.0f km, and a minimum distance of %,.0f km\n"
         , getName(), maxDistanceToCentralBody(), minDistanceToCentralBody());
@@ -35,8 +40,28 @@ public abstract class NaturalSatellite extends CelestialBody{
                 , getName(), distanceToCentralBody(degrees), centralCelestialBody.getName(), degrees);
     }
 
-    public double distanceBetweenPlanets(Planet planet) {
-        return 0;
+    /**
+     *
+     * @param days number of days elapsed since planet was aligned at 0 degrees
+     * @return angle at planet position after a given number of days
+     */
+    public double getDegrees(int days) {
+        double degreesPerDay = 360.0 / orbitalPeriod;
+        return days * degreesPerDay;
+    }
+
+    /**
+     * a² = b² + c² - 2bc cos θ
+     * @param planet the planet we want to know the distance to
+     * @param days number of days elapsed since planets were aligned at 0 degrees
+     * @return distance between planets in km
+     */
+    public double distanceBetweenPlanets(NaturalSatellite planet, int days) {
+        double b = distanceToCentralBody(getDegrees(days));
+        double c = planet.distanceToCentralBody(planet.getDegrees(days));
+        double theta = getDegrees(days) - planet.getDegrees(days);
+        double a = Math.pow(b, 2) + Math.pow(c, 2) - 2 * b * c * Math.cos(Math.toRadians(theta));
+        return Math.sqrt(a);
     }
 
     /**
@@ -58,24 +83,28 @@ public abstract class NaturalSatellite extends CelestialBody{
 
     public double minDistanceToCentralBody() {
         double degrees = 0;
-        double degreeIncrement = 360.0 / orbitalPeriod;
+        double degreesPerDay = 360.0 / orbitalPeriod;
         double minDistance = distanceToCentralBody(0);
+
         for (int i = 0; i < orbitalPeriod; i++) {
-            degrees += degreeIncrement;
-            if (distanceToCentralBody(degrees) < minDistance)
-                minDistance = distanceToCentralBody(degrees);
+            degrees += degreesPerDay;
+            double distance = distanceToCentralBody(degrees);
+            if (distance < minDistance)
+                minDistance = distance;
         }
         return minDistance;
     }
 
     public double maxDistanceToCentralBody() {
         double degrees = 0;
-        double degreeIncrement = 360.0 / orbitalPeriod;
+        double degreesPerDay = 360.0 / orbitalPeriod;
         double maxDistance = distanceToCentralBody(0);
+
         for (int i = 0; i < orbitalPeriod; i++) {
-            degrees += degreeIncrement;
-            if (distanceToCentralBody(degrees) > maxDistance)
-                maxDistance = distanceToCentralBody(degrees);
+            degrees += degreesPerDay;
+            double distance = distanceToCentralBody(degrees);
+            if (distance > maxDistance)
+                maxDistance = distance;
         }
         return maxDistance;
     }
