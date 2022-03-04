@@ -15,6 +15,11 @@ public abstract class NaturalSatellite extends CelestialBody{
         this.centralCelestialBody = centralCelestialBody;
     }
 
+    public void printMaxDistanceBetweenPlanets(NaturalSatellite planet) {
+        System.out.printf("The max distance between %s and %s is %,.0f km\n"
+        , getName(), planet.getName(), maxDistanceBetweenPlanets(planet));
+    }
+
     public void printDistanceBetweenPlanets(NaturalSatellite planet, int days) {
         System.out.printf("The distance between %s and %s at day %d is %,.0f km\n"
         , getName(), planet.getName(), days, distanceBetweenPlanets(planet, days));
@@ -41,13 +46,38 @@ public abstract class NaturalSatellite extends CelestialBody{
     }
 
     /**
+     * Iterates over all possible combinations of positions(within one day of movement) of two natural satellites
+     * @param planet planet to find max distance to
+     * @return max distance between planets in kilometers
+     */
+    public double maxDistanceBetweenPlanets(NaturalSatellite planet) {
+        double maxDistance = 0;
+        for (int i = 0; i < orbitalPeriod; i++) {
+            for (int j = 0; j < planet.orbitalPeriod; j++) {
+                double distance = distanceBetweenPlanets(planet, getDegrees(i), getDegrees(j));
+                if (distance > maxDistance)
+                    maxDistance = distance;
+            }
+        }
+        return maxDistance;
+    }
+
+    /**
      *
      * @param days number of days elapsed since planet was aligned at 0 degrees
      * @return angle at planet position after a given number of days
      */
-    public double getDegrees(int days) {
+    private double getDegrees(int days) {
         double degreesPerDay = 360.0 / orbitalPeriod;
         return days * degreesPerDay;
+    }
+
+    public double distanceBetweenPlanets(NaturalSatellite planet, double iDegrees, double jDegrees) {
+        double b = distanceToCentralBody(iDegrees);
+        double c = planet.distanceToCentralBody(jDegrees);
+        double theta = iDegrees - jDegrees;
+        double a = Math.pow(b, 2) + Math.pow(c, 2) - 2 * b * c * Math.cos(Math.toRadians(theta));
+        return Math.sqrt(a);
     }
 
     /**

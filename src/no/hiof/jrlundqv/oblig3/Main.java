@@ -49,5 +49,8 @@ public class Main {
 
         System.out.println("\nOppgave 3.3");
         earth.printDistanceBetweenPlanets(saturn, 180);
+
+        System.out.println("\nOppgave 3.?");
+        earth.printMaxDistanceBetweenPlanets(saturn);
     }
 }
