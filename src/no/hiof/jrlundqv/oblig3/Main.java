@@ -52,5 +52,6 @@ public class Main {
 
         System.out.println("\nOppgave 3.?");
         earth.printMaxDistanceBetweenPlanets(saturn);
+        neptune.printMaxDistanceBetweenPlanets(uranus);
     }
 }

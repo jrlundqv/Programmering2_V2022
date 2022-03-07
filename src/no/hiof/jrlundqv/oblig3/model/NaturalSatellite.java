@@ -46,15 +46,16 @@ public abstract class NaturalSatellite extends CelestialBody{
     }
 
     /**
-     * Iterates over all possible combinations of positions(within one day of movement) of two natural satellites
+     * Iterates over all possible combinations of positions(within one degree) of two natural satellites
+     * 360 degrees * 360 degrees results in 129600 iterations.
      * @param planet planet to find max distance to
      * @return max distance between planets in kilometers
      */
     public double maxDistanceBetweenPlanets(NaturalSatellite planet) {
         double maxDistance = 0;
-        for (int i = 0; i < orbitalPeriod; i++) {
-            for (int j = 0; j < planet.orbitalPeriod; j++) {
-                double distance = distanceBetweenPlanets(planet, getDegrees(i), getDegrees(j));
+        for (int i = 0; i < 360; i++) {
+            for (int j = 0; j < 360; j++) {
+                double distance = distanceBetweenPlanets(planet, i, j);
                 if (distance > maxDistance)
                     maxDistance = distance;
             }
