@@ -2,7 +2,7 @@ package no.hiof.jrlundqv.oblig4.model;
 
 import java.util.ArrayList;
 
-public class PlanetSystem {
+public class PlanetSystem implements Comparable<PlanetSystem>{
     private String name;
     private Star centerStar;
     private ArrayList<Planet> planets;
@@ -11,6 +11,10 @@ public class PlanetSystem {
         this.name = name;
         this.centerStar = centerStar;
         this.planets = planets;
+    }
+
+    public int compareTo(PlanetSystem o) {
+        return Integer.compare(0, planets.size() - o.planets.size());
     }
 
     public Planet getPlanetByName(String name) {

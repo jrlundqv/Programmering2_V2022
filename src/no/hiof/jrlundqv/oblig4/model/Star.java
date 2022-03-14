@@ -18,8 +18,13 @@ public class Star extends CelestialBody {
         return getMass() * MSUN;
     }
 
+    @Override
     public String toString() {
-        return getName() + ", Radius: " + getRadius() + ", Mass: " + getMass() + ", Eff. temp.: " + effectiveTemp;
+        return "Name: " + getName() + ", Radius: " + getRadius() + ", Mass: " + getMass() + ", Eff. temp.: " + effectiveTemp;
+    }
+
+    public String toCSV() {
+        return getName() + "," + getRadius() + "," + getMass() + "," + effectiveTemp + "\n";
     }
 
     public int getEffectiveTemp() {

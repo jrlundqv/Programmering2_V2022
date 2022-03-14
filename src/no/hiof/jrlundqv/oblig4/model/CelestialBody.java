@@ -1,6 +1,6 @@
 package no.hiof.jrlundqv.oblig4.model;
 
-public abstract class CelestialBody {
+public abstract class CelestialBody implements Comparable<CelestialBody>{
     private String name;
     private double radius;
     private double mass;
@@ -10,6 +10,10 @@ public abstract class CelestialBody {
         this.name = name;
         this.radius = radius;
         this.mass = mass;
+    }
+
+    public int compareTo(CelestialBody o) {
+        return Double.compare(0, o.radius - radius);
     }
 
     public abstract double getRadiusInKm();
